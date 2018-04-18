@@ -1,0 +1,19 @@
+# tasks file for mariadb-server
+---
+- name: databases | create
+  mysql_db:
+    name: "{{ item.name }}"
+    collation: "{{ item.collation | default('utf8_general_ci') }}"
+    encoding: "{{ item.encoding | default('utf8') }}"
+    state: present
+  with_items: "{{ percona_server_databases_present }}"
+  tags:
+    - mariadb-server-databases-create
+
+- name: databases | drop
+  mysql_db:
+    name: "{{ item.name }}"
+    state: absent
+  with_items: "{{ percona_server_databases_absent }}"
+  tags:
+    - mariadb-server-databases-drop

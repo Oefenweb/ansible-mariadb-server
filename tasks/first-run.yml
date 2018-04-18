@@ -1,0 +1,10 @@
+# tasks file for mariadb-server
+---
+- name: first-run | check
+  shell: >
+    dpkg-query -W -f='${Status}' mariadb-server | grep -q 'install ok installed'
+  register: mysqld_installed
+  changed_when: false
+  failed_when: false
+  tags:
+    - mariadb-server-first-run-check

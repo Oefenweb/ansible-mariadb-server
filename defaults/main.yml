@@ -1,0 +1,52 @@
+# defaults file for mariadb-server
+---
+percona_server_root_password: '+eswuw9uthUteFreyAqu'
+
+percona_server_etc_my_cnf: []
+
+percona_server_user_root_cnf_manage: true
+percona_server_user_root_cnf_preset:
+  - section: client
+    options:
+      - name: host
+        value: localhost
+      - name: user
+        value: root
+      - name: password
+        value: "'{{ percona_server_root_password }}'"
+percona_server_user_root_cnf: "{{ percona_server_user_root_cnf_preset }}"
+
+percona_server_install:
+  - xtrabackup
+
+percona_server_ssl_map: {}
+
+percona_server_plugins_present: []
+percona_server_plugins_absent: []
+
+percona_server_databases_present: []
+percona_server_databases_absent:
+  # Remove test database
+  - name: test
+
+percona_server_users_present: []
+percona_server_users_present_hosts:
+  - 'localhost'
+
+percona_server_users_absent:
+  # Remove anonymous users
+  - name: ''
+percona_server_users_absent_hosts:
+  - "{{ ansible_hostname }}"
+  - '127.0.0.1'
+  - 'localhost'
+  - '::1'
+  - '%'
+
+percona_server_queries: []
+
+percona_server_zoneinfo_manage: false
+percona_server_zoneinfo_tz_dir: /usr/share/zoneinfo
+percona_server_zoneinfo_tz_file: ''
+percona_server_zoneinfo_tz_name: ''
+percona_server_zoneinfo_command: "mysql_tzinfo_to_sql {{ percona_server_zoneinfo_tz_dir }}"

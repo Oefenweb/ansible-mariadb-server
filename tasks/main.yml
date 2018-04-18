@@ -1,0 +1,70 @@
+# tasks file for mariadb-server
+---
+- include: first-run.yml
+  tags:
+    - configuration
+    - mariadb-server
+    - mariadb-server-first-run
+
+- include: install.yml
+  tags:
+    - configuration
+    - mariadb-server
+    - mariadb-server-install
+
+- include: configure.yml
+  tags:
+    - configuration
+    - mariadb-server
+    - mariadb-server-configure
+
+- include: toolkit-udfs.yml
+  tags:
+    - configuration
+    - mariadb-server
+    - mariadb-server-toolkit-udfs
+
+- include: zoneinfo.yml
+  tags:
+    - configuration
+    - mariadb-server
+    - mariadb-server-zoneinfo
+  when: percona_server_zoneinfo_manage | bool
+
+- include: databases.yml
+  tags:
+    - configuration
+    - mariadb-server
+    - mariadb-server-databases
+
+- include: users.yml
+  tags:
+    - configuration
+    - mariadb-server
+    - mariadb-server-users
+
+- include: plugins.yml
+  tags:
+    - configuration
+    - mariadb-server
+    - mariadb-server-plugins
+
+- include: queries.yml
+  tags:
+    - configuration
+    - mariadb-server
+    - mariadb-server-queries
+
+- include: ib-logfile.yml
+  tags:
+    - configuration
+    - mariadb-server
+    - mariadb-server-ib-logfile
+
+- name: start and enable service
+  service:
+    name: mysql
+    state: "{{ service_default_state | default('started') }}"
+    enabled: "{{ service_default_enabled | default(true) | bool }}"
+  tags:
+    - mariadb-server-start-enable-service

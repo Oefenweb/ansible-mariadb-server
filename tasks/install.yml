@@ -1,0 +1,36 @@
+# tasks file for mariadb-server
+---
+- name: install | configure debconf
+  debconf:
+    name: "{{ item.name }}"
+    question: "{{ item.question }}"
+    value: "{{ item.value }}"
+    vtype: "{{ item.vtype }}"
+  with_items: "{{ percona_server_debconf_selections }}"
+  changed_when: false
+  tags:
+    - mariadb-server-install-configure-debconf
+
+- name: install | dependencies
+  apt:
+    name: "{{ item }}"
+    state: "{{ apt_install_state | default('latest') }}"
+  with_items: "{{ percona_server_dependencies }}"
+  tags:
+    - mariadb-server-install-dependencies
+
+- name: install | dependencies | check service
+  service:
+    name: mysql
+    state: started
+  tags:
+    - mariadb-server-install-dependencies
+    - mariadb-server-install-dependencies-check
+
+- name: install | additional
+  apt:
+    name: "{{ item }}"
+    state: "{{ apt_install_state | default('latest') }}"
+  with_items: "{{ percona_server_install }}"
+  tags:
+    - mariadb-server-install-additional
