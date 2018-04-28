@@ -1,23 +1,23 @@
 # vars file for mariadb-server
 ---
-percona_server_debconf_selections:
+mariadb_server_debconf_selections:
  - name: "mariadb-server"
    question: mariadb-server/root_password
-   value: "{{ percona_server_root_password }}"
+   value: "{{ mariadb_server_root_password }}"
    vtype: password
  - name: "mariadb-server"
    question: mariadb-server/root_password_again
-   value: "{{ percona_server_root_password }}"
+   value: "{{ mariadb_server_root_password }}"
    vtype: password
 
-percona_server_dependencies:
+mariadb_server_dependencies:
   - mariadb-client
   - mariadb-server
   - python-mysqldb
 
-percona_server_lock_path: /var/lib/ansible/mariadb-server/lock
+mariadb_server_lock_path: /var/lib/ansible/mariadb-server/lock
 
-percona_server_toolkit_udfs: []
+mariadb_server_toolkit_udfs: []
 #  - function: fnv1a_64
 #    soname: libfnv1a_udf.so
 #  - function: fnv_64

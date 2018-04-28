@@ -7,7 +7,7 @@
     owner: "{{ item.value.owner | default('root') }}"
     group: "{{ item.value.group | default('mysql') }}"
     mode: "{{ item.value.mode | default('0640') }}"
-  with_dict: "{{ percona_server_ssl_map }}"
+  with_dict: "{{ mariadb_server_ssl_map }}"
   notify: restart mariadb-server
   tags:
     - mariadb-server-configure-copy-certificate-files
@@ -30,6 +30,6 @@
     owner: root
     group: root
     mode: 0600
-  when: percona_server_user_root_cnf_manage
+  when: mariadb_server_user_root_cnf_manage
   tags:
     - mariadb-server-configure-root-my-cnf

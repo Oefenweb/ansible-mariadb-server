@@ -11,7 +11,7 @@
 # Needed because of Ansible 1 / 2 differences
 - name: ib logfile | store datadir
   set_fact:
-     percona_server_datadir: "{{ datadir_value.msg.0.1 if datadir_value.msg.0.1 is defined else datadir_value.msg }}"
+     mariadb_server_datadir: "{{ datadir_value.msg.0.1 if datadir_value.msg.0.1 is defined else datadir_value.msg }}"
   tags:
     - mariadb-server-store-datadir
     - mariadb-server-store-datadir-set-fact
@@ -29,8 +29,8 @@
     path: "{{ item }}"
     state: absent
   with_items:
-    - "{{ percona_server_datadir.rstrip('/') }}/ib_logfile0"
-    - "{{ percona_server_datadir.rstrip('/') }}/ib_logfile1"
+    - "{{ mariadb_server_datadir.rstrip('/') }}/ib_logfile0"
+    - "{{ mariadb_server_datadir.rstrip('/') }}/ib_logfile1"
   when: mysqld_installed.rc != 0
   tags:
     - mariadb-server-ib-logfile-remove

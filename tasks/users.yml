@@ -8,8 +8,8 @@
     host: "{{ item[1] }}"
     state: present
   with_nested:
-    - "{{ percona_server_users_present | selectattr('hosts', 'undefined') | list }}"
-    - "{{ percona_server_users_present_hosts }}"
+    - "{{ mariadb_server_users_present | selectattr('hosts', 'undefined') | list }}"
+    - "{{ mariadb_server_users_present_hosts }}"
   tags:
     - mariadb-server-users-create
     - mariadb-server-users-create-default-hosts
@@ -22,7 +22,7 @@
     host: "{{ item[1] }}"
     state: present
   with_subelements:
-    - "{{ percona_server_users_present | selectattr('hosts', 'defined') | list }}"
+    - "{{ mariadb_server_users_present | selectattr('hosts', 'defined') | list }}"
     - hosts
   tags:
     - mariadb-server-users-create
@@ -34,8 +34,8 @@
     host: "{{ item[1] }}"
     state: absent
   with_nested:
-    - "{{ percona_server_users_absent | selectattr('hosts', 'undefined') | list }}"
-    - "{{ percona_server_users_absent_hosts }}"
+    - "{{ mariadb_server_users_absent | selectattr('hosts', 'undefined') | list }}"
+    - "{{ mariadb_server_users_absent_hosts }}"
   tags:
     - mariadb-server-users-drop
     - mariadb-server-users-drop-default-hosts
@@ -46,7 +46,7 @@
     host: "{{ item[1] }}"
     state: absent
   with_subelements:
-    - "{{ percona_server_users_absent | selectattr('hosts', 'defined') | list }}"
+    - "{{ mariadb_server_users_absent | selectattr('hosts', 'defined') | list }}"
     - hosts
   tags:
     - mariadb-server-users-drop

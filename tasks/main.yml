@@ -29,7 +29,7 @@
     - configuration
     - mariadb-server
     - mariadb-server-zoneinfo
-  when: percona_server_zoneinfo_manage | bool
+  when: mariadb_server_zoneinfo_manage | bool
 
 - include: databases.yml
   tags:

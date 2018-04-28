@@ -7,6 +7,7 @@ python: "2.7"
 
 env:
   - ANSIBLE_VERSION=latest
+  - ANSIBLE_VERSION=2.5.2
   - ANSIBLE_VERSION=2.5.1
   - ANSIBLE_VERSION=2.5.0
   - ANSIBLE_VERSION=2.4.4.0
@@ -70,5 +71,5 @@ notifications:
   email: false
   hipchat:
     rooms:
-      secure: cvnHmJmT0rLctOszRLuZqTfSxVPfk9VvKHsKpKJntvQ5d6KvZKj8Pq8Wbnj4TeUxgOWJiWDycHTOWxxEzXJQDR4mqPv1Hlj+VZTzIjkWS+PZNQys429zTqBfQrDm62nAMHfoX7OOH4FKMVS8zoliwMPMXg0zSGcYu+MJeea12XpJ7G5E9iYQEiGv/sXZ8R0DxWgGlGcaQ+qML3cfNfH1XJs5UJnG4m74ATjWc3whz98BkCrQe0i/yQy7prjq6vtM6cTKUsnFmONNZI58iogtxMRtyw3pRnXYcMnWAA77M1Hs5O5b0UGglfNv7hbCTsOaQNYGbZem148KDF8HVxOPIYlcnub7qPZ83CSqMYnZtUItWSFk6X/6JeYrBxEWChE3xoq8r27Xyt6g1BotK0bf81U8LDHW8grnVprBJPM8BYw0skVrzcLX7fwsqj/evvxgMbtLjAbDkCh9YyW7ww89URuUk9KI1RW1KFIL1y2uID2Kw15Bmkgf+Yt+XObkYCA+nrSvA11iff+DR+Y4RDErGkkTUSIovHGZiCV9qQzal7u3yGZvbrIoc+V/Cu9pOwtYBqfFKFuigf30gu+bah8bI4rJC8Zxl3E+gn+/dgbg5rWGekGTk/kGS8suNeGDOUvKfPovnvV77EOSH3jJv2tQdiS3C/KrCZ/4/2DzsTUgW8c=
+      secure: C/u95YXUYmrY1+SpKtBC8DZqH6YkjadQYlHbw43t2i1qj65KlBVxyEtWCXnkGfzmXFOtkpq+RvGCy7af6F/pKBE6JtfQk1AdKk4zn7ngXiVeeMGr7wf//fYGvu24OJdmpQ4Jg3ROr/SG6De3Fj2dR8hbwoBMugd+bEeuVQPIQlbjMQuD06EA7pTusLuKy9BuHEyTeaw5iJ3kneu4BQbiuXmHBSfUR364wxCKHqpospHBd/23oOUeLwLdksIvF8jht93JjSwRdArsjeiv/auDRWXRIbO0rMTcJ46hvDxgTNg0/hR1d8nhO+kl2bCmORVapHHlsTlz+SCTHinSJrBTrVNCizepdxH3mIKF1LQd/5DCUTJr/zEj1pg/vRhI5fEfcN93rLSPBNWyToV7lceCBFC/SA1SZdJX3sdM6zfx1hiD0G9svm4L4cRmEnZhviphIL9Z+0jdDXgzXqDgpVOEd3kEBVncRUYSneFzRUtPElXP9j9veIEAPdiFyl89UO2Wo+6j1ynCa6hFNZtZJd1BeW1tYMwNDx1svPQEqTu0oNwoCymhRG87MVb9rGx35pxCYMszfZ5dGJNBaXvGyGaEMEIvgmlW0w/ffjMG2t30Qi/YG/Ht6qqrmIYMM/VxIYpk9GynUfIXJ+5iIRz4Rjuudr+5hxbQ+fiDswF3Ij/TWEY=
   webhooks: https://galaxy.ansible.com/api/v1/notifications/

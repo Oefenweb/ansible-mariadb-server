@@ -6,7 +6,7 @@
   register: rows_affected
   changed_when: "rows_affected.stdout | int > 0"
   with_subelements:
-    - "{{ percona_server_queries }}"
+    - "{{ mariadb_server_queries }}"
     - queries
   tags:
     - mariadb-server-queries-execute-sql
