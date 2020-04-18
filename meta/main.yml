@@ -1,6 +1,7 @@
 # meta file for mariadb-server
 ---
 galaxy_info:
+  role_name: mariadb-server
   author: Mischa ter Smitten
   company: Oefenweb.nl B.V.
   description: Set up mariadb-server server in Debian-like systems
