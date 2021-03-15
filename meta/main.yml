@@ -1,6 +1,7 @@
-# meta file for mariadb-server
+# meta file
 ---
 galaxy_info:
+  namespace: oefenweb
   role_name: mariadb-server
   author: Mischa ter Smitten
   company: Oefenweb.nl B.V.

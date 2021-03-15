@@ -1,4 +1,4 @@
-# vars file for mariadb-server
+# vars file
 ---
 mariadb_server_debconf_selections:
  - name: "mariadb-server"

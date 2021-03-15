@@ -1,4 +1,4 @@
-# tasks file for mariadb-server
+# tasks file
 ---
 - include: first-run.yml
   tags:

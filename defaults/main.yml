@@ -1,4 +1,4 @@
-# defaults file for mariadb-server
+# defaults file
 ---
 mariadb_server_root_password: '+eswuw9uthUteFreyAqu'
 

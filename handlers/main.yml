@@ -1,4 +1,4 @@
-# handlers file for mariadb-server
+# handlers file
 ---
 - name: restart mariadb-server
   service:
