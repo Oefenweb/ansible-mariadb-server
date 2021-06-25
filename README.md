@@ -1,6 +1,7 @@
 ## mariadb-server
 
-[![Build Status](https://travis-ci.org/Oefenweb/ansible-mariadb-server.svg?branch=master)](https://travis-ci.org/Oefenweb/ansible-mariadb-server) [![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-mariadb--server-blue.svg)](https://galaxy.ansible.com/Oefenweb/mariadb-server)
+[![Build Status](https://travis-ci.org/Oefenweb/ansible-mariadb-server.svg?branch=master)](https://travis-ci.org/Oefenweb/ansible-mariadb-server)
+[![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-mariadb--server-blue.svg)](https://galaxy.ansible.com/Oefenweb/mariadb_server)
 
 Set up a [mariadb-server](https://mariadb.com/products/technology/server) server in Debian-like systems.
 
