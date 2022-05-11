@@ -13,9 +13,10 @@
 
 - name: install | dependencies
   apt:
-    name: "{{ item }}"
+    name: "{{ mariadb_server_dependencies }}"
     state: "{{ apt_install_state | default('latest') }}"
-  with_items: "{{ mariadb_server_dependencies }}"
+    update_cache: true
+    cache_valid_time: "{{ apt_update_cache_valid_time | default(3600) }}"
   tags:
     - mariadb-server-install-dependencies
 
@@ -29,8 +30,7 @@
 
 - name: install | additional
   apt:
-    name: "{{ item }}"
+    name: "{{ mariadb_server_install }}"
     state: "{{ apt_install_state | default('latest') }}"
-  with_items: "{{ mariadb_server_install }}"
   tags:
     - mariadb-server-install-additional

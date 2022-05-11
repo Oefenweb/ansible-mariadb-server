@@ -16,8 +16,7 @@ mariadb_server_user_root_cnf_preset:
         value: "'{{ mariadb_server_root_password }}'"
 mariadb_server_user_root_cnf: "{{ mariadb_server_user_root_cnf_preset }}"
 
-mariadb_server_install:
-  - xtrabackup
+mariadb_server_install: []
 
 mariadb_server_ssl_map: {}
 
