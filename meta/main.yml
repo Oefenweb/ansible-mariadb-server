@@ -2,10 +2,10 @@
 ---
 galaxy_info:
   namespace: oefenweb
-  role_name: percona_client
+  role_name: mariadb_server
   author: Mischa ter Smitten
   company: Oefenweb.nl B.V.
-  description: Set up percona-server client in Debian-like systems
+  description: Set up mariadb-server server in Debian-like systems
   license: MIT
   min_ansible_version: 2.10.0
   platforms:
