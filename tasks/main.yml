@@ -1,68 +1,78 @@
 # tasks file
 ---
-- include: first-run.yml
+- name: first run
+  ansible.builtin.import_tasks: first-run.yml
   tags:
     - configuration
     - mariadb-server
     - mariadb-server-first-run
 
-- include: install.yml
+- name: install
+  ansible.builtin.import_tasks: install.yml
   tags:
     - configuration
     - mariadb-server
     - mariadb-server-install
 
-- include: configure.yml
+- name: configure
+  ansible.builtin.import_tasks: configure.yml
   tags:
     - configuration
     - mariadb-server
     - mariadb-server-configure
 
-#- include: toolkit-udfs.yml
+#- name: toolkit udfs
+#  ansible.builtin.import_tasks: toolkit-udfs.yml
 #  tags:
 #    - configuration
 #    - mariadb-server
 #    - mariadb-server-toolkit-udfs
 #
-#- include: zoneinfo.yml
+#- name: zoneinfo
+#  ansible.builtin.import_tasks: zoneinfo.yml
 #  tags:
 #    - configuration
 #    - mariadb-server
 #    - mariadb-server-zoneinfo
 #  when: mariadb_server_zoneinfo_manage | bool
 #
-#- include: databases.yml
+#- name: databases
+#  ansible.builtin.import_tasks: databases.yml
 #  tags:
 #    - configuration
 #    - mariadb-server
 #    - mariadb-server-databases
 #
-#- include: users.yml
+#- name: users
+#  ansible.builtin.import_tasks: users.yml
 #  tags:
 #    - configuration
 #    - mariadb-server
 #    - mariadb-server-users
 #
-#- include: plugins.yml
+#- name: plugins
+#  ansible.builtin.import_tasks: plugins.yml
 #  tags:
 #    - configuration
 #    - mariadb-server
 #    - mariadb-server-plugins
 #
-#- include: queries.yml
+#- name: queries
+#  ansible.builtin.import_tasks: queries.yml
 #  tags:
 #    - configuration
 #    - mariadb-server
 #    - mariadb-server-queries
 #
-#- include: ib-logfile.yml
+#- name: ib-logfile
+#  ansible.builtin.import_tasks: ib-logfile.yml
 #  tags:
 #    - configuration
 #    - mariadb-server
 #    - mariadb-server-ib-logfile
 
 - name: start and enable service
-  service:
+  ansible.builtin.service:
     name: mysql
     state: "{{ service_default_state | default('started') }}"
     enabled: "{{ service_default_enabled | default(true) | bool }}"
