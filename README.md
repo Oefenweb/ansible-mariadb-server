@@ -100,7 +100,7 @@ None
 ---
 - hosts: all
   roles:
-    - mariadb-server
+    - oefenweb.mariadb-server
 ```
 
 ##### Configure databases and users
@@ -109,7 +109,7 @@ None
 ---
 - hosts: all
   roles:
-    - mariadb-server
+    - oefenweb.mariadb-server
   vars:
     mariadb_server_databases_present:
       - name: ipsum
@@ -149,7 +149,7 @@ None
 ```yaml
 - hosts: all
   roles:
-    - mariadb-server
+    - oefenweb.mariadb-server
   vars:
     mariadb_server_ssl_map:
       ca-cert:
@@ -191,7 +191,7 @@ None
 ```yaml
 - hosts: master
   roles:
-    - mariadb-server
+    - oefenweb.mariadb-server
   vars:
     mariadb_server_users_present:
       - name: replicator
@@ -217,8 +217,9 @@ None
 
 - hosts: slave
   roles:
-    - mariadb-server
+    - oefenweb.mariadb-server
   vars:
+    mariadb_server_users_present:
       - name: replicator
         password: 'replicator'
         privs:
@@ -251,7 +252,7 @@ None
 ```yaml
 - hosts: master1
   roles:
-    - mariadb-server
+    - oefenweb.mariadb-server
   vars:
     mariadb_server_users_present:
       - name: replicator
@@ -286,7 +287,7 @@ None
 
 - hosts: master2
   roles:
-    - mariadb-server
+    - oefenweb.mariadb-server
   vars:
     mariadb_server_users_present:
       - name: replicator
