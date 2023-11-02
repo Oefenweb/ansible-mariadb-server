@@ -1,26 +1,27 @@
-# tasks file for mariadb-server
+# tasks file
 ---
 - name: install | configure debconf
-  debconf:
+  ansible.builtin.debconf:
     name: "{{ item.name }}"
     question: "{{ item.question }}"
     value: "{{ item.value }}"
     vtype: "{{ item.vtype }}"
-  with_items: "{{ percona_server_debconf_selections }}"
+  with_items: "{{ mariadb_server_debconf_selections }}"
   changed_when: false
   tags:
     - mariadb-server-install-configure-debconf
 
 - name: install | dependencies
-  apt:
-    name: "{{ item }}"
+  ansible.builtin.apt:
+    name: "{{ mariadb_server_dependencies }}"
     state: "{{ apt_install_state | default('latest') }}"
-  with_items: "{{ percona_server_dependencies }}"
+    update_cache: true
+    cache_valid_time: "{{ apt_update_cache_valid_time | default(3600) }}"
   tags:
     - mariadb-server-install-dependencies
 
 - name: install | dependencies | check service
-  service:
+  ansible.builtin.service:
     name: mysql
     state: started
   tags:
@@ -28,9 +29,8 @@
     - mariadb-server-install-dependencies-check
 
 - name: install | additional
-  apt:
-    name: "{{ item }}"
+  ansible.builtin.apt:
+    name: "{{ mariadb_server_install }}"
     state: "{{ apt_install_state | default('latest') }}"
-  with_items: "{{ percona_server_install }}"
   tags:
     - mariadb-server-install-additional

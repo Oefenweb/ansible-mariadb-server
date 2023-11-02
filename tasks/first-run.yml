@@ -1,7 +1,7 @@
-# tasks file for mariadb-server
+# tasks file
 ---
 - name: first-run | check
-  shell: >
+  ansible.builtin.shell: >
     dpkg-query -W -f='${Status}' mariadb-server | grep -q 'install ok installed'
   register: mysqld_installed
   changed_when: false

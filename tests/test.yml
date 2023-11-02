@@ -1,4 +1,4 @@
-# test file for mariadb-server
+# test file
 ---
 - hosts: localhost
   connection: local
@@ -6,19 +6,19 @@
   roles:
     - ../../
   vars:
-    percona_server_databases_present:
+    mariadb_server_databases_present:
       - name: ipsum
       - name: dolor
 
-    percona_server_databases_absent:
+    mariadb_server_databases_absent:
       - name: sit
       - name: amet
 
-    percona_server_users_present_hosts:
+    mariadb_server_users_present_hosts:
       - 'localhost'
       - '%'
 
-    percona_server_users_present:
+    mariadb_server_users_present:
       - name: consectetur
         password: 'elit'
         privs:
@@ -32,15 +32,15 @@
         hosts:
           - '%'
 
-    percona_server_users_absent:
+    mariadb_server_users_absent:
       - name: urna
       - name: vehicula
         hosts:
           - '%'
 
-    percona_server_queries:
+    mariadb_server_queries:
       - database: mysql
         queries:
           - "INSERT IGNORE INTO user (Host, User, Password, ssl_type, ssl_cipher, x509_issuer, x509_subject) VALUES ('localhost', 'test', password('test'), '', '', '', '')"
 
-    percona_server_zoneinfo_manage: true
+    mariadb_server_zoneinfo_manage: true

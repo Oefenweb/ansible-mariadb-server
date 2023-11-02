@@ -1,8 +1,8 @@
-# tasks file for mariadb-server
+# tasks file
 ---
 - name: plugins | create (lock) directory
-  file:
-    path: "{{ percona_server_lock_path }}"
+  ansible.builtin.file:
+    path: "{{ mariadb_server_lock_path }}"
     state: directory
     owner: root
     group: root
@@ -11,19 +11,19 @@
     - mariadb-server-plugins-lock-directory
 
 - name: plugins | uninstall
-  shell: >
-    mysql -e "UNINSTALL PLUGIN {{ item.name }};" && rm {{ percona_server_lock_path }}/{{ item.name | lower }}
+  ansible.builtin.shell: >
+    mysql -e "UNINSTALL PLUGIN {{ item.name }};" && rm {{ mariadb_server_lock_path }}/{{ item.name | lower }}
   args:
-    removes: "{{ percona_server_lock_path }}/{{ item.name | lower }}"
-  with_items: "{{ percona_server_plugins_absent }}"
+    removes: "{{ mariadb_server_lock_path }}/{{ item.name | lower }}"
+  with_items: "{{ mariadb_server_plugins_absent }}"
   tags:
     - mariadb-server-plugins-uninstall
 
 - name: plugins | install
-  shell: >
-    mysql -e "INSTALL PLUGIN {{ item.name }} SONAME '{{ item.soname }}';" && touch {{ percona_server_lock_path }}/{{ item.name | lower }}
+  ansible.builtin.shell: >
+    mysql -e "INSTALL PLUGIN {{ item.name }} SONAME '{{ item.soname }}';" && touch {{ mariadb_server_lock_path }}/{{ item.name | lower }}
   args:
-    creates: "{{ percona_server_lock_path }}/{{ item.name | lower }}"
-  with_items: "{{ percona_server_plugins_present }}"
+    creates: "{{ mariadb_server_lock_path }}/{{ item.name | lower }}"
+  with_items: "{{ mariadb_server_plugins_present }}"
   tags:
     - mariadb-server-plugins-install

@@ -1,19 +1,19 @@
-# tasks file for mariadb-server
+# tasks file
 ---
 - name: configure | copy certificate files
-  copy:
+  ansible.builtin.copy:
     src: "{{ item.value.src }}"
     dest: "{{ item.value.dest }}"
     owner: "{{ item.value.owner | default('root') }}"
     group: "{{ item.value.group | default('mysql') }}"
     mode: "{{ item.value.mode | default('0640') }}"
-  with_dict: "{{ percona_server_ssl_map }}"
+  with_dict: "{{ mariadb_server_ssl_map }}"
   notify: restart mariadb-server
   tags:
     - mariadb-server-configure-copy-certificate-files
 
 - name: configure | update (global) configuration file
-  template:
+  ansible.builtin.template:
     src: etc/mysql/my.cnf.j2
     dest: /etc/mysql/my.cnf
     owner: root
@@ -24,12 +24,12 @@
     - mariadb-server-configure-global-my-cnf
 
 - name: configure | update (root) configuration file
-  template:
+  ansible.builtin.template:
     src: root/.my.cnf.j2
     dest: '~root/.my.cnf'
     owner: root
     group: root
     mode: 0600
-  when: percona_server_user_root_cnf_manage
+  when: mariadb_server_user_root_cnf_manage
   tags:
     - mariadb-server-configure-root-my-cnf
