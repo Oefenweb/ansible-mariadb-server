@@ -1,10 +1,18 @@
 # tasks file
 ---
 - name: first-run | check
+  ansible.builtin.apt:
+    update_cache: true
+    cache_valid_time: "{{ apt_update_cache_valid_time | default(3600) }}"
+  tags:
+    - mariadb-server-first
+
+- name: first-run | check
   ansible.builtin.shell: >
     dpkg-query -W -f='${Status}' mariadb-server | grep -q 'install ok installed'
-  register: mysqld_installed
+  register: _mysqld_installed
   changed_when: false
+  check_mode: false
   failed_when: false
   tags:
     - mariadb-server-first-run-check

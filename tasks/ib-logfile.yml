@@ -20,7 +20,7 @@
   ansible.builtin.service:
     name: mysql
     state: stopped
-  when: mysqld_installed.rc != 0
+  when: _mysqld_installed.rc != 0
   tags:
     - mariadb-server-ib-logfile-stop-service
 
@@ -31,7 +31,7 @@
   with_items:
     - "{{ mariadb_server_datadir.rstrip('/') }}/ib_logfile0"
     - "{{ mariadb_server_datadir.rstrip('/') }}/ib_logfile1"
-  when: mysqld_installed.rc != 0
+  when: _mysqld_installed.rc != 0
   tags:
     - mariadb-server-ib-logfile-remove
 
@@ -39,6 +39,6 @@
   ansible.builtin.service:
     name: mysql
     state: started
-  when: mysqld_installed.rc != 0
+  when: _mysqld_installed.rc != 0
   tags:
     - mariadb-server-ib-logfile-start-service
