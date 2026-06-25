@@ -21,7 +21,7 @@ Set up a [mariadb-server](https://mariadb.com/products/technology/server) server
 * `mariadb_server_etc_my_cnf`: [default: `[]`]: Global configuration declarations
 * `mariadb_server_etc_my_cnf_includedir`: [optional]: Used to include other option files from this directory (e.g. `/etc/mysql/conf.d/`)
 
-* `mariadb_server_user_root_cnf_manage`: [default: `true`]: Whether or not to manage `~root/.my.cnf`
+* `mariadb_server_user_root_cnf_manage`: [default: `true`]: Whether to manage `~root/.my.cnf`
 * `mariadb_server_user_root_cnf`: [default: `mariadb_server_user_root_cnf_preset`, see `defaults/main.yml`]: Root user configuration declarations
 
 ##### SSL
@@ -67,7 +67,7 @@ Set up a [mariadb-server](https://mariadb.com/products/technology/server) server
 * `mariadb_server_users_absent.{n}.name`: [required]: The name of the user
 * `mariadb_server_users_absent.{n}.hosts`: [optional, default: `mariadb_server_users_absent_hosts`]: Hosts to `DROP` privileges for (e.g. `%`)
 
-* `mariadb_server_users_absent_hosts`: [default: `[{{ ansible_hostname }}, 127.0.0.1, localhost, ::1, %]`]: Hosts to `DROP` privileges for
+* `mariadb_server_users_absent_hosts`: [default: `[{{ ansible_facts['hostname'] }}, 127.0.0.1, localhost, ::1, %]`]: Hosts to `DROP` privileges for
 
 ##### Queries
 
@@ -77,7 +77,7 @@ Set up a [mariadb-server](https://mariadb.com/products/technology/server) server
 
 ##### Timezone info
 
-* `mariadb_server_zoneinfo_manage`: [default: `false`]: Whether or not to load time zone tables
+* `mariadb_server_zoneinfo_manage`: [default: `false`]: Whether to load time zone tables
 * `mariadb_server_zoneinfo_tz_dir`: [default: `/usr/share/zoneinfo`]: The zoneinfo directory path name
 * `mariadb_server_zoneinfo_tz_file`: [default: `''`]: The path of a single time zone file (e.g. `/usr/share/zoneinfo/Europe/Amsterdam`)
 * `mariadb_server_zoneinfo_tz_name`: [default: `''`]: A time zone name (e.g. `Europe/Amsterdam`)
