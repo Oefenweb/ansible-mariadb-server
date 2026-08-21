@@ -1,23 +1,25 @@
-# meta file for mariadb-server
+# meta file
 ---
 galaxy_info:
-  author: Mischa ter Smitten
+  author: oefenweb
+  role_name: mariadb_server
   company: Oefenweb.nl B.V.
   description: Set up mariadb-server server in Debian-like systems
   license: MIT
-  min_ansible_version: 2.0.0.0
+  min_ansible_version: 2.10.0
   platforms:
     - name: Ubuntu
       versions:
-        - precise
-        - trusty
-        - xenial
+        - bionic
+        - focal
+        - jammy
+        - noble
     - name: Debian
       versions:
-        - wheezy
-        - jessie
+        - bullseye
+        - bookworm
   galaxy_tags:
     - system
     - database
-    - database:sql
+    - sql
 dependencies: []
